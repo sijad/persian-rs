@@ -2,5 +2,13 @@
 name = "persian"
 version = "0.1.0"
 authors = ["Sajjad Hashemian <wolaws@gmail.com>"]
+description = "helpers for Persian language."
+license = "MIT"
+repository = "https://github.com/sijad/persian-rs"
+readme = "README.md"
+keywords = [
+  "farsi",
+  "persian",
+]
 
 [dependencies]
