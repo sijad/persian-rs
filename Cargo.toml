@@ -1,0 +1,6 @@
+[package]
+name = "persian"
+version = "0.1.0"
+authors = ["Sajjad Hashemian <wolaws@gmail.com>"]
+
+[dependencies]
