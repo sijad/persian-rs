@@ -4,6 +4,13 @@ use std::string::String;
 
 const PERSIAN_TO_ENGLISH_DIFF: u32 = '۰' as u32 - '0' as u32;
 
+/// Converts all Persian digits to English digits.
+///
+/// # Examples
+///
+/// ```
+/// assert_eq!(persian::persian_to_english_digits("۰۱۲۳۴۵۶۷۸۹"), "0123456789");
+/// ```
 pub fn persian_to_english_digits<'a>(s: &'a str) -> Cow<'a, str> {
     let mut buf = String::with_capacity(s.len());
 
@@ -19,6 +26,13 @@ pub fn persian_to_english_digits<'a>(s: &'a str) -> Cow<'a, str> {
     return buf.into();
 }
 
+/// Converts all English digits to Persian digits.
+///
+/// # Examples
+///
+/// ```
+/// assert_eq!(persian::english_to_persian_digits("0123456789"), "۰۱۲۳۴۵۶۷۸۹");
+/// ```
 pub fn english_to_persian_digits<'a>(s: &'a str) -> Cow<'a, str> {
     let mut buf = String::with_capacity(s.len());
 
