@@ -1,5 +1,4 @@
 use std::char;
-use std::borrow::Cow;
 use std::string::String;
 
 const PERSIAN_TO_ENGLISH_DIFF: u32 = '۰' as u32 - '0' as u32;
@@ -11,9 +10,8 @@ const PERSIAN_TO_ENGLISH_DIFF: u32 = '۰' as u32 - '0' as u32;
 /// ```
 /// assert_eq!(persian::persian_to_english_digits("۰۱۲۳۴۵۶۷۸۹"), "0123456789");
 /// ```
-pub fn persian_to_english_digits<'a>(s: &'a str) -> Cow<'a, str> {
+pub fn persian_to_english_digits(s: &str) -> String {
     let mut buf = String::with_capacity(s.len());
-
     for c in s.chars() {
         let c_ = match c {
             '۰' ... '۹' => char::from_u32(c as u32 - PERSIAN_TO_ENGLISH_DIFF).unwrap(),
@@ -23,7 +21,7 @@ pub fn persian_to_english_digits<'a>(s: &'a str) -> Cow<'a, str> {
         buf.push(c_)
     }
 
-    return buf.into();
+    buf
 }
 
 /// Converts all English digits to Persian digits.
@@ -33,7 +31,7 @@ pub fn persian_to_english_digits<'a>(s: &'a str) -> Cow<'a, str> {
 /// ```
 /// assert_eq!(persian::english_to_persian_digits("0123456789"), "۰۱۲۳۴۵۶۷۸۹");
 /// ```
-pub fn english_to_persian_digits<'a>(s: &'a str) -> Cow<'a, str> {
+pub fn english_to_persian_digits(s: &str) -> String {
     let mut buf = String::with_capacity(s.len());
 
     for c in s.chars() {
@@ -45,7 +43,7 @@ pub fn english_to_persian_digits<'a>(s: &'a str) -> Cow<'a, str> {
         buf.push(c_)
     }
 
-    return buf.into();
+    buf
 }
 
 #[cfg(test)]
@@ -70,7 +68,7 @@ mod tests {
     }
 
     #[test]
-    fn english_to_persian_digits_test() {
+    fn english_to_persian_digits_test() { 
         assert_eq!(english_to_persian_digits("0123456789"), "۰۱۲۳۴۵۶۷۸۹");
         assert_eq!(english_to_persian_digits("۰۱۲۳۴۵۶۷۸۹"), "۰۱۲۳۴۵۶۷۸۹");
         assert_eq!(english_to_persian_digits("0۱2۳4۵6۷8۹"), "۰۱۲۳۴۵۶۷۸۹");
