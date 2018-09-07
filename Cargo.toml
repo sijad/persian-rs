@@ -1,6 +1,6 @@
 [package]
 name = "persian"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Sajjad Hashemian <wolaws@gmail.com>"]
 description = "helpers for Persian language."
 license = "MIT"
